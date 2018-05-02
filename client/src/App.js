@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import NoMatch from './components/NoMatch';
+import Items from './components/Items';
+import Locations from './components/Locations';
+import NavBar from './components/NavBar';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">I'm working stupid</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <NavBar />
+      <Switch>
+        <Route exact path="/items" component={Items} />,
+        <Route exact path="./locations" component={Locations} />,
+        <Route component={NoMatch} />
+      </Switch>
+  </div>
+);
 
 export default App;
